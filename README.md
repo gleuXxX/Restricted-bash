@@ -12,7 +12,9 @@
  
 ## Principe: 
 
-- Surcharger le bash par défaut afin de ne bloquer toutes les commandes non spécifiquement autorisées.
+- Surcharger le bash par défaut afin de ne bloquer que les commandes non spécifiquement autorisées.
+- Fonctionnement plus souple et complet que le rbash.
+- Traçabilité des actions
  
 ## Fonctionnement : 
 
@@ -52,7 +54,8 @@
 	- Les balises /*SHELL RESTREINT */ indique le code rajouté.
 	- Il n'y a aucune modification de code source existant. Il y a juste des rajouts (plus facile à maintenir en cas de grosse modification du bash pour les versions futures)
 
-
+## Post-scriptum
+I'm not developper ;-)
 
 ## About Us
 
