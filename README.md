@@ -54,7 +54,10 @@
 			- N --> Mode normal (liste noire) . bloque les commandes dont l'option est spécifiée dans cette regex
 			- I --> Mode inversée (liste blanche) . Autorise uniquement les options présentes dans cette regex
 			- O --> Mode Matched Only. Seule (ou les) lignes complètes sont autorisés (commande fournie au bash). 			- REGEX 
-		- exemple bash --login POUET -c /usr/bin/[[:alnum:]]*
+		- exemples:
+			- bash#O#--login POUET -c /usr/bin/[[:alnum:]]*  bloquera "bash --login POUET -c /usr/bin/toto
+			- /bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]* n'autorisera que l'option -ef de la commande ps
+			- /bin/ls#N#-{1,2}[[:alnum:]]*(a)+[[:alnum:]]* interdira l'usage de l'option a de la commande ls			- 
  
  ## Code source
 	- Le code modifié se situe dans le fichier execute_cmd.c .
