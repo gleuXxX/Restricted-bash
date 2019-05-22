@@ -55,8 +55,9 @@
 
 
 ## About Us
-Un grand merci à ADA pour son aide précieuse.
-LEG [@2951210a5fea430](https://twitter.com/2951210a5fea430)
+
+- Un grand merci à Arnauld Daniel pour son aide précieuse.
+- LEG [@2951210a5fea430](https://twitter.com/2951210a5fea430)
 
 
 ##License
