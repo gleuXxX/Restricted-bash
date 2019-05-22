@@ -19,14 +19,14 @@
   \_____|\__,_|_|_|_|\__,_|\__,_|_| |_| |_|\___| |______|______|_| \_|\____/|____/|______|______|
 
 
-Version 1.01 : 21/05/2019
+### Version 1.01 : 21/05/2019
   
  
-Principe: 
+## Principe: 
 
 - Surcharger le bash par défaut afin de ne bloquer toutes les commandes non spécifiquement autorisées.
  
-Fonctionnement : 
+## Fonctionnement : 
 
 - On surcharge le /bin/bash avec une version de bash modifiée et on force le lien /bin/sh à pointer vers le nouveau /bin/bash
 - Version du bash : 4.4
@@ -38,7 +38,7 @@ Fonctionnement :
 	- Tous les utilisateurs dont le gid est inférieur à une valeur saisie à l'installation sont contrôlés. L'utilisateur root et les autres utilisateurs privilégiés ne sont donc pas impactés par ces restrictions
 	- Le syslog redirige dans /var/log/message le log dans lancement (réussi ou non) des commandes. Il faut donc s'en servir pour construire la liste de droits d'un utilisateur.
  
- Configuration :
+ ## Configuration :
 - on copie les sources dans un répertoire temporaire
 - on lance le script "install_bash_secure.sh". Il efface à la fin les fichiers temporaires et le code source modifié.
 - les fichiers textes du répertoire /etc/restricted-bash/ doivent avoir les droits 644 et appartenir à root..
@@ -46,7 +46,7 @@ Fonctionnement :
 - pour les liens symbolique il faut mettre dans le fichier le binaire d'orgine . Exemple : /usr/bin/python2.7  à la place de /usr/bin/python
 
 
-Fichier de commande :
+## Fichier de commande :
 - Le format est :
 	- BINAIRE#LETTRE#REGEX où :
 		- BINAIRE = Chemin absolu du binaire  à autoriser
@@ -56,7 +56,7 @@ Fichier de commande :
 			- O --> Mode Matched Only. Seule (ou les) lignes complètes sont autorisés (commande fournie au bash). 			- REGEX 
 		- exemple bash --login POUET -c /usr/bin/[[:alnum:]]*
  
- - Code source
+ ## Code source
 	- Le code modifié se situe dans le fichier execute_cmd.c .
 	- Les balises /*SHELL RESTREINT */ indique le code rajouté.
 	- Il n'y a aucune modification de code source existant. Il y a juste des rajouts (plus facile à maintenir en cas de grosse modification du bash pour les versions futures)
