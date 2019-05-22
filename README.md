@@ -47,7 +47,7 @@
 			- /bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]* n'autorisera que l'option -ef de la commande ps
 			- /bin/ls#N#-{1,2}[[:alnum:]]*(a)+[[:alnum:]]* interdira l'usage de l'option a de la commande ls			- 
  
- ## Code source
+ ## Divers
 	- Le code modifié se situe dans le fichier execute_cmd.c .
 	- Les balises /*SHELL RESTREINT */ indique le code rajouté.
 	- Il n'y a aucune modification de code source existant. Il y a juste des rajouts (plus facile à maintenir en cas de grosse modification du bash pour les versions futures)
