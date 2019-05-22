@@ -48,7 +48,7 @@
 			- /bin/ls#N#-{1,2}[[:alnum:]]*(a)+[[:alnum:]]* interdira l'usage de l'option a de la commande ls			- 
  
  ## Divers
-	- Le code modifié se situe dans le fichier execute_cmd.c .
+	- Les sources du bash restrinet se situe dans le fichier execute_cmd.c .
 	- Les balises /*SHELL RESTREINT */ indique le code rajouté.
 	- Il n'y a aucune modification de code source existant. Il y a juste des rajouts (plus facile à maintenir en cas de grosse modification du bash pour les versions futures)
 
