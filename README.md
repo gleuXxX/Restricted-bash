@@ -1,4 +1,4 @@
-# RestrictedBash
+# Restricted-Bash
                                                                       
                                                                       
 
@@ -55,5 +55,5 @@
 
 
 ## About Us
-ADA
+Un grand merci à ADA pour son aide précieuse.
 LEG [@2951210a5fea430](https://twitter.com/2951210a5fea430)
