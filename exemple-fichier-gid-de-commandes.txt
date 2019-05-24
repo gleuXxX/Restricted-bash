@@ -1,0 +1,21 @@
+/bin/bash#O#-c \/usr\/bin\/top
+/bin/ls
+/bin/cat
+/bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]*
+/bin/sleep
+/usr/sbin/consoletype
+/bin/zip
+/bin/cat
+/bin/echo
+/bin/rm
+/bin/sh
+/bin/uname
+/bin/mkdir
+/bin/tty
+/usr/bin/groups
+/usr/bin/pandoc#N#-{1,2}[[:alnum:]]*(F)+[[:alnum:]]*
+/bin/rm
+/bin/echo
+/bin/expr
+/usr/bin/git
+/opt/tempo/test.sh
