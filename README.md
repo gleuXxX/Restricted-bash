@@ -19,7 +19,7 @@
 ## Fonctionnement : 
 
 - On surcharge le /bin/bash avec une version de bash modifiée et on force le lien /bin/sh à pointer vers le nouveau /bin/bash
-- Version du bash : 4.4
+- Version du bash : 4.4 (pas encore tester la V5)
 - Lorsque un utilisateur veut lancer une commande, le programme:
 	- Vérifie la liste des caractères autorisés "/etc/restricted-bash/car.txt"
 	- Cherche un fichier contenant les commandes autorisés. Ce fichier porte le nom "/etc/restricted-bash/N°GID_utilisateur.txt"
@@ -29,7 +29,7 @@
 	- Le syslog redirige dans /var/log/message le log dans lancement (réussi ou non) des commandes. Il faut donc s'en servir pour construire la liste de droits d'un utilisateur.
  
  ## Installation / Configuration :
-- on copie les sources dans un répertoire temporaire
+- on copie les sources dans un répertoire temporaire (http://ftp.gnu.org/gnu/bash/bash-4.4.tar.gz)
 - on lance le script "install_bash_secure.sh" (en tant que root). Il efface à la fin les fichiers temporaires et le code source modifié.
 - les fichiers textes du répertoire /etc/restricted-bash/ doivent avoir les droits 644 et appartenir à root..
 - La base du filtrage s'effectuant via le gid, la constante du fichier execute_cmd.c "#define GID_MIN 1000" contient la valeur à partir de laquelle le filtrage fonctionne. Les utilisations dont le GID est inférieur ne sont pas sousmis à ce filtrage (root par exemple). Le script d'installation install_bash_secure.sh demande le GID minimum.
