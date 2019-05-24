@@ -19,7 +19,7 @@
 ## Fonctionnement : 
 
 - On surcharge le /bin/bash avec une version de bash modifiée et on force le lien /bin/sh à pointer vers le nouveau /bin/bash
-- Version du bash : 4.4 (pas encore tester la V5)
+- Version du bash : 4.4 (pas encore testé la V5)
 - Lorsque un utilisateur veut lancer une commande, le programme:
 	- Vérifie la liste des caractères autorisés "/etc/restricted-bash/car.txt"
 	- Cherche un fichier contenant les commandes autorisés. Ce fichier porte le nom "/etc/restricted-bash/N°GID_utilisateur.txt"
