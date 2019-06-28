@@ -52,7 +52,7 @@
  
  
   ## Exemple de fichier de comamndes 
-  ```
+  ```ruby
  /bin/ls
  /bin/cat
  /bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]*
