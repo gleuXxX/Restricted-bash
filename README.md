@@ -25,16 +25,16 @@
 	- Cherche un fichier contenant les commandes autorisés. Ce fichier porte le nom "/etc/restricted-bash/N°GID_utilisateur.txt"
 	- Si la commande existe dans le fichier alors il l'exécute, sinon il la rejette.
 	- La commande peut avoir des options interdites. Elles sont exprimées sous la forme d'une expression reguliere. Si les options passées correspondent avec celles ci, alors la commande est rejettée.  
-	- Tous les utilisateurs dont le gid est inférieur à une valeur saisie à l'installation sont contrôlés. L'utilisateur root et les autres utilisateurs privilégiés ne sont donc pas impactés par ces restrictions
+	- Tous les utilisateurs dont le gid est supérieur à une valeur saisie à l'installation sont contrôlés. L'utilisateur root et les autres utilisateurs privilégiés ne sont donc pas impactés par ces restrictions
 	- Le syslog redirige dans /var/log/message le log dans lancement (réussi ou non) des commandes. Il faut donc s'en servir pour construire la liste de droits d'un utilisateur.
+	- La base du filtrage s'effectuant via le gid, la constante du fichier execute_cmd.c "#define GID_MIN 1000" contient la valeur à partir de laquelle le filtrage fonctionne. Les utilisations dont le GID est inférieur ne sont pas sousmis à ce filtrage (root par exemple ou les autres comptes systèmes. cela evite des effets de bord pour des utilisateurs à privilèges). Le script d'installation install_bash_secure.sh demande le GID minimum (il faut donc vérifier la liste des GID au préalable dans /etc/passwd. Attention dans le cas de l'utilisation de comptes externe (via pam; sssd, winbind , ldap,etc.)
  
  ## Installation / Configuration :
 - on copie les sources dans un répertoire temporaire 
 - on télécharge le bash 4.4 (http://ftp.gnu.org/gnu/bash/bash-4.4.tar.gz) que l'on place dans le répertoire d'installation
 - on lance le script "install_bash_secure.sh" (en tant que root). Il efface à la fin les fichiers temporaires et le code source modifié.
-- les fichiers textes du répertoire /etc/restricted-bash/ doivent avoir les droits 644 et appartenir à root..
-- La base du filtrage s'effectuant via le gid, la constante du fichier execute_cmd.c "#define GID_MIN 1000" contient la valeur à partir de laquelle le filtrage fonctionne. Les utilisations dont le GID est inférieur ne sont pas sousmis à ce filtrage (root par exemple ou les autres comptes systèmes. cela evite des effets de bord pour des utilisateurs à privilèges). Le script d'installation install_bash_secure.sh demande le GID minimum (il faut donc vérifier la liste des GID au préalable dans /etc/passwd. Attention dans le cas de l'utilisation de comptes externe (via pam; sssd, winbind , ldap,etc.)
-- il faut maintenant créer le fichier de commande pour chaque GID.
+- les fichiers textes du répertoire /etc/restricted-bash/ doivent avoir les droits 644 et appartenir à root.(idem pour le répertoire /etc/restricted/)
+- il faut maintenant créer le fichier de commande pour chaque utilisateur ("N°GID.txt").
 
 
 ## Fichier de commande :
