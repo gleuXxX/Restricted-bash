@@ -35,8 +35,10 @@
 - on lance le script "install_bash_secure.sh" (en tant que root). Il efface à la fin les fichiers temporaires et le code source modifié.
 - les fichiers textes du répertoire /etc/restricted-bash/ doivent avoir les droits 644 et appartenir à root.(idem pour le répertoire /etc/restricted/)
 - il faut maintenant créer le fichier de commande pour chaque utilisateur ("N°GID.txt") car l'installateur ne créé pas les fichiers de commandes par utilisateurs (les GIDs.txt). Par conséquent un utilisateur qui se voit appliquer les restrictions du shell ne peut pas lancer de commande par défaut. 
-- Rappel : les commandes bloquées apparaissent dans le fichier /var/log/message (syslog). Pour vérifier l'installation il suffit d'ouvrir une session avec un utilisateur à restreindre et de tester des commandes qui ne sont pas dans son fichier de commandes
+- Rappel : les commandes bloquées apparaissent dans le fichier /var/log/message (syslog). Pour vérifier l'installation il suffit d'ouvrir une session avec un utilisateur à restreindre et de tester des commandes qui ne sont pas dans son fichier de commandes. 
 
+
+![alt text](https://github.com/gleuXxX/Restricted-bash/blob/master/Shell-restreint-1.png)
 
 ## Fichier de commande :
 - Le format est :
