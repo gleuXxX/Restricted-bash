@@ -48,32 +48,35 @@
 		- exemples:
 			- bash#O#--login POUET -c /usr/bin/[[:alnum:]]*  bloquera "bash --login POUET -c /usr/bin/toto
 			- /bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]* n'autorisera que l'option -ef de la commande ps
-			- /bin/ls#N#-{1,2}[[:alnum:]]*(a)+[[:alnum:]]* interdira l'usage de l'option a de la commande ls	- - Pour les liens symbolique il faut mettre dans le fichier le binaire d'orgine . Exemple : /usr/bin/python2.7  à la place de /usr/bin/python		- 
+			- /bin/ls#N#-{1,2}[[:alnum:]]*(a)+[[:alnum:]]* interdira l'usage de l'option a de la commande ls	- - Pour les liens symbolique il faut mettre dans le fichier le binaire d'orgine . Exemple : /usr/bin/python2.7  à la place de /usr/bin/python
  
  
   ## Exemple de fichier de comamndes 
-  ```ruby
- /bin/ls
- /bin/cat
- /bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]*
- /bin/sleep
- /usr/sbin/consoletype
- /bin/tty
- /usr/bin/groups
- /usr/bin/pandoc#N#-{1,2}[[:alnum:]]*(F)+[[:alnum:]]*
- /bin/rm
- /bin/echo
- /bin/expr
- /usr/bin/git
- /bin/bash#O#--login\s*-c\s\s\/usr\/lib\/rstudio-server\/bin\/rsession
- 
+  
+```
+  /bin/ls
+  /bin/cat
+  /bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]*
+  /bin/sleep
+  /usr/sbin/consoletype
+  /bin/tty
+  /usr/bin/groups
+  /usr/bin/pandoc#N#-{1,2}[[:alnum:]]*(F)+[[:alnum:]]*
+  /bin/rm
+  /bin/echo
+  /bin/expr
+  /usr/bin/git
+  /bin/bash#O#--login\s*-c\s\s\/usr\/lib\/rstudio-server\/bin\/rsession
+```
+  
+  
 Dans ce fichier les lignes n'ayant pas de caractère #, sont entierement autorisées.
 - La ligne "/bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]*" permet d'utiliser uniquement ps avec l'option ef
 - La Ligne "/usr/bin/pandoc#N#-{1,2}[[:alnum:]]*(F)+[[:alnum:]]*" interdit l'option -F de pandoc mais autorise les autres
 - La ligne /"bin/bash#O#--login\s*-c\s\s\/usr\/lib\/rstudio-server\/bin\/rsession" autorise la commande complête uniquement (entièrement matchée)
- ```
+
  
- ## Divers
+## Divers
 	- Les sources du bash restrinet se situe dans le fichier execute_cmd.c .
 	- Les balises /*SHELL RESTREINT */ indique le code rajouté.
 	- Il n'y a aucune modification de code source existant. Il y a juste des rajouts (plus facile à maintenir en cas de grosse modification du bash pour les versions futures)
