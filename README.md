@@ -51,7 +51,8 @@
 			- /bin/ls#N#-{1,2}[[:alnum:]]*(a)+[[:alnum:]]* interdira l'usage de l'option a de la commande ls	- - Pour les liens symbolique il faut mettre dans le fichier le binaire d'orgine . Exemple : /usr/bin/python2.7  à la place de /usr/bin/python		- 
  
  
-  ## Exemple de fichier de comamndes (sources)
+  ## Exemple de fichier de comamndes 
+  ```
  /bin/ls
  /bin/cat
  /bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]*
@@ -70,7 +71,7 @@ Dans ce fichier les lignes n'ayant pas de caractère #, sont entierement autoris
 - La ligne "/bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]*" permet d'utiliser uniquement ps avec l'option ef
 - La Ligne "/usr/bin/pandoc#N#-{1,2}[[:alnum:]]*(F)+[[:alnum:]]*" interdit l'option -F de pandoc mais autorise les autres
 - La ligne /"bin/bash#O#--login\s*-c\s\s\/usr\/lib\/rstudio-server\/bin\/rsession" autorise la commande complête uniquement (entièrement matchée)
- 
+ ```
  
  ## Divers
 	- Les sources du bash restrinet se situe dans le fichier execute_cmd.c .
