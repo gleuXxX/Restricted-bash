@@ -29,10 +29,12 @@
 	- Le syslog redirige dans /var/log/message le log dans lancement (réussi ou non) des commandes. Il faut donc s'en servir pour construire la liste de droits d'un utilisateur.
  
  ## Installation / Configuration :
-- on copie les sources dans un répertoire temporaire (http://ftp.gnu.org/gnu/bash/bash-4.4.tar.gz)
+- on copie les sources dans un répertoire temporaire 
+- ont télécharge le bash 4.4 (http://ftp.gnu.org/gnu/bash/bash-4.4.tar.gz) que l'on place dans le répertoire d'installation
 - on lance le script "install_bash_secure.sh" (en tant que root). Il efface à la fin les fichiers temporaires et le code source modifié.
 - les fichiers textes du répertoire /etc/restricted-bash/ doivent avoir les droits 644 et appartenir à root..
-- La base du filtrage s'effectuant via le gid, la constante du fichier execute_cmd.c "#define GID_MIN 1000" contient la valeur à partir de laquelle le filtrage fonctionne. Les utilisations dont le GID est inférieur ne sont pas sousmis à ce filtrage (root par exemple). Le script d'installation install_bash_secure.sh demande le GID minimum.
+- La base du filtrage s'effectuant via le gid, la constante du fichier execute_cmd.c "#define GID_MIN 1000" contient la valeur à partir de laquelle le filtrage fonctionne. Les utilisations dont le GID est inférieur ne sont pas sousmis à ce filtrage (root par exemple ou les autres comptes systèmes. cela evite des effets de bord pour des utilisateurs à privilèges). Le script d'installation install_bash_secure.sh demande le GID minimum (il faut donc vérifier la liste des GID au préalable dans /etc/passwd. Attention dans le cas de l'utilisation de comptes externe (via pam; sssd, winbind , ldap,etc.)
+- il faut maintenant créer le fichier de commande pour chaque GID.
 
 
 ## Fichier de commande :
@@ -47,6 +49,28 @@
 			- bash#O#--login POUET -c /usr/bin/[[:alnum:]]*  bloquera "bash --login POUET -c /usr/bin/toto
 			- /bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]* n'autorisera que l'option -ef de la commande ps
 			- /bin/ls#N#-{1,2}[[:alnum:]]*(a)+[[:alnum:]]* interdira l'usage de l'option a de la commande ls	- - Pour les liens symbolique il faut mettre dans le fichier le binaire d'orgine . Exemple : /usr/bin/python2.7  à la place de /usr/bin/python		- 
+ 
+ 
+  ## Exemple de fichier de comamndes
+ bin/ls
+/bin/cat
+/bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]*
+/bin/sleep
+/usr/sbin/consoletype
+/bin/tty
+/usr/bin/groups
+/usr/bin/pandoc#N#-{1,2}[[:alnum:]]*(F)+[[:alnum:]]*
+/bin/rm
+/bin/echo
+/bin/expr
+/usr/bin/git
+/bin/bash#O#--login\s*-c\s\s\/usr\/lib\/rstudio-server\/bin\/rsession
+
+Dans ce fichier les lignes n'ayant pas de caractère #, sont entierement autorisées.
+- La ligne "/bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]*" permet d'utiliser uniquement ps avec l'option ef
+- La Ligne "/usr/bin/pandoc#N#-{1,2}[[:alnum:]]*(F)+[[:alnum:]]*" interdit l'option -F de pandoc mais autorise les autres
+- La ligne /"bin/bash#O#--login\s*-c\s\s\/usr\/lib\/rstudio-server\/bin\/rsession" autorise la commande complête uniquement (entièrement matchée)
+ 
  
  ## Divers
 	- Les sources du bash restrinet se situe dans le fichier execute_cmd.c .
