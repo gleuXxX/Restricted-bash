@@ -30,7 +30,7 @@
  
  ## Installation / Configuration :
 - on copie les sources dans un répertoire temporaire 
-- ont télécharge le bash 4.4 (http://ftp.gnu.org/gnu/bash/bash-4.4.tar.gz) que l'on place dans le répertoire d'installation
+- on télécharge le bash 4.4 (http://ftp.gnu.org/gnu/bash/bash-4.4.tar.gz) que l'on place dans le répertoire d'installation
 - on lance le script "install_bash_secure.sh" (en tant que root). Il efface à la fin les fichiers temporaires et le code source modifié.
 - les fichiers textes du répertoire /etc/restricted-bash/ doivent avoir les droits 644 et appartenir à root..
 - La base du filtrage s'effectuant via le gid, la constante du fichier execute_cmd.c "#define GID_MIN 1000" contient la valeur à partir de laquelle le filtrage fonctionne. Les utilisations dont le GID est inférieur ne sont pas sousmis à ce filtrage (root par exemple ou les autres comptes systèmes. cela evite des effets de bord pour des utilisateurs à privilèges). Le script d'installation install_bash_secure.sh demande le GID minimum (il faut donc vérifier la liste des GID au préalable dans /etc/passwd. Attention dans le cas de l'utilisation de comptes externe (via pam; sssd, winbind , ldap,etc.)
