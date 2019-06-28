@@ -52,20 +52,20 @@
  
  
   ## Exemple de fichier de comamndes
- bin/ls
-/bin/cat
-/bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]*
-/bin/sleep
-/usr/sbin/consoletype
-/bin/tty
-/usr/bin/groups
-/usr/bin/pandoc#N#-{1,2}[[:alnum:]]*(F)+[[:alnum:]]*
-/bin/rm
-/bin/echo
-/bin/expr
-/usr/bin/git
-/bin/bash#O#--login\s*-c\s\s\/usr\/lib\/rstudio-server\/bin\/rsession
-
+ /bin/ls
+ /bin/cat
+ /bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]*
+ /bin/sleep
+ /usr/sbin/consoletype
+ /bin/tty
+ /usr/bin/groups
+ /usr/bin/pandoc#N#-{1,2}[[:alnum:]]*(F)+[[:alnum:]]*
+ /bin/rm
+ /bin/echo
+ /bin/expr
+ /usr/bin/git
+ /bin/bash#O#--login\s*-c\s\s\/usr\/lib\/rstudio-server\/bin\/rsession
+ 
 Dans ce fichier les lignes n'ayant pas de caractère #, sont entierement autorisées.
 - La ligne "/bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]*" permet d'utiliser uniquement ps avec l'option ef
 - La Ligne "/usr/bin/pandoc#N#-{1,2}[[:alnum:]]*(F)+[[:alnum:]]*" interdit l'option -F de pandoc mais autorise les autres
