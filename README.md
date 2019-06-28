@@ -51,7 +51,7 @@
 			- /bin/ls#N#-{1,2}[[:alnum:]]*(a)+[[:alnum:]]* interdira l'usage de l'option a de la commande ls	- - Pour les liens symbolique il faut mettre dans le fichier le binaire d'orgine . Exemple : /usr/bin/python2.7  à la place de /usr/bin/python		- 
  
  
-  ## Exemple de fichier de comamndes
+  ## Exemple de fichier de comamndes (sources)
  /bin/ls
  /bin/cat
  /bin/ps#I#-{1,2}[[:alnum:]]*(ef)+[[:alnum:]]*
